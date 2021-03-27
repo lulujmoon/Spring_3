@@ -14,7 +14,7 @@
 		
 		<c:if test="${(not empty member and member.id ne 'admin') or empty member}">
 			<br><br>
-			<p style="text-align:center">잘못된 접근입니다.</p>
+			<p style="text-align:center">잘못된 접근입니다!</p>
 		</c:if>
 		
 		<c:if test="${not empty member and member.id eq 'admin'}">
