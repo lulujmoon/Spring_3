@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- schema 스키마 -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="com.redbeet.s3.passbook.PassbookDAO">
+ 	<insert id="setWrite" parameterType="PassbookDTO">
+ 		insert into passbook values (pb_num.nextval, #{name}, #{irate}, #{openable})
+ 	</insert>
+ 	
+ 	<select id="getSelect" parameterType="PassbookDTO" resultType="com.redbeet.s3.passbook.PassbookDTO">
+ 		select * from passbook where num=#{num}
+ 	</select>
+ 	
+ 	<select id="getList" resultType="PassbookDTO">
+ 		select * from passbook order by num desc
+ 	</select>
+ 	
+ 	<delete id="setDelete" parameterType="PassbookDTO">
+ 		delete passbook where num=#{num}
+ 	</delete>
+ 	
+ 	<update id="setUpdate" parameterType="PassbookDTO">
+ 		update passbook set name=#{name}, irate=#{irate}, openable=#{openable} where num=#{num}
+ 	</update>
+ </mapper>

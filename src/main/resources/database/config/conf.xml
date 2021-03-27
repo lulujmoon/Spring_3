@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- from "https://mybatis.org/mybatis-3/getting-started.html" -->
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.redbeet.s3.member.MemberDTO" alias="MemberDTO"/>
+		<typeAlias type="com.redbeet.s3.passbook.PassbookDTO" alias="PassbookDTO"/> 
+		<typeAlias type="com.redbeet.s3.account.AccountDTO" alias="AccountDTO"/>
+		<typeAlias type="com.redbeet.s3.notice.NoticeDTO" alias="NoticeDTO"/>
+	</typeAliases>
+</configuration>
