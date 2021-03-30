@@ -12,14 +12,17 @@
   </head>
   <body>
 	<c:import url="./template/header.jsp"></c:import>
-	
-	<div class="container" style="margin-top:30px">
-		<h2>Welcome!</h2>
 
-		<img src="./resources/images/raft.jpg" alt="Raft image">
 
+	<div>
+		<button id="btn" onclick="go()">Click!</button>
+		<button id="btn" onclick="go2()">Click!</button>
+	</div>
+
+	<div id="c1" class="b1">
+		<h1 id="t1">Welcome Home Page</h1>
 	</div>
 	
-<script type="text/javascript" src="./resources/js/test.js"></script>
+	<script type="text/javascript" src="./resources/js/test.js"></script>
   </body>
 </html>
