@@ -23,9 +23,10 @@
 				<input type="text" class="form-control" id="subject" name="subject">
 			</div>
 			<div class="form-group">
-				<label for="content">Content</label>
-				<input type="text" class="form-control" id="content" name="content">
-			</div>
+   				 <label for="exampleFormControlTextarea1">Content</label>
+  				 <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" name="content"></textarea>
+ 			</div>
+
 
 			<button class="btn btn-info">Write</button>
 		</form>

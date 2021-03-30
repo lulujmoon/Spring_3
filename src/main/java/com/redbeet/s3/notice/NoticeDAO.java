@@ -1,11 +1,14 @@
 package com.redbeet.s3.notice;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.redbeet.s3.util.Pager;
 
 @Repository
 public class NoticeDAO {
@@ -15,10 +18,15 @@ public class NoticeDAO {
 	
 	private final String NAMESPACE = "com.redbeet.s3.notice.NoticeDAO.";
 	
+
 	
-	public List<NoticeDTO> getList() throws Exception {
-		return sqlSession.selectList(NAMESPACE+"getList");
+	public List<NoticeDTO> getList(Pager pager) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getList", pager);
 		
+	}
+	
+	public long getTotalCount(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 	
 	public NoticeDTO getSelect(NoticeDTO noticeDTO) throws Exception {

@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.redbeet.s3.MyAbstractTest;
+import com.redbeet.s3.util.Pager;
 
 public class NoticeDAOTest extends MyAbstractTest {
 
@@ -15,10 +16,13 @@ public class NoticeDAOTest extends MyAbstractTest {
 	private NoticeDAO noticeDAO;
 
 	
-//	 @Test public void getListTest() throws Exception { 
-//		 List<NoticeDTO> li = noticeDAO.getList(); 
-//		 assertNotEquals(0, li.size()); 
-//		 }
+	 @Test public void getListTest() throws Exception {
+		 Pager pager = new Pager();
+		 pager.setStartRow(1);
+		 pager.setLastRow(10);
+		 List<NoticeDTO> li = noticeDAO.getList(pager); 
+		 assertNotEquals(0, li.size()); 
+		 }
 	 
 //	 @Test public void getSelectTest() throws Exception { 
 //		 NoticeDTO noticeDTO = new NoticeDTO(); 
@@ -29,14 +33,19 @@ public class NoticeDAOTest extends MyAbstractTest {
 	 
 
 //	@Test public void setInsertTest() throws Exception {
-//		NoticeDTO noticeDTO = new NoticeDTO(); 
-//		noticeDTO.setSubject("제목4"); 
-//		noticeDTO.setName("관리자");
-//		noticeDTO.setContent("내용4입니다.");
-//	  
-//		int result = noticeDAO.setInsert(noticeDTO);
-//	 
-//		assertNotEquals(0, result); 
+//		int result = 0;
+//		for(int i=0;i<120;i++) {
+//			NoticeDTO noticeDTO = new NoticeDTO(); 
+//			noticeDTO.setSubject("제목"+i); 
+//			noticeDTO.setName("관리자");
+//			noticeDTO.setContent("내용"+i+"입니다.");
+//			result = noticeDAO.setInsert(noticeDTO);
+//			if(i%10==0) {
+//				Thread.sleep(500);
+//			}
+//
+//		}
+//
 //	}
 	 
 

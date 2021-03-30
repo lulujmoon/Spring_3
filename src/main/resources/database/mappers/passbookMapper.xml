@@ -14,8 +14,23 @@
  		select * from passbook where num=#{num}
  	</select>
  	
- 	<select id="getList" resultType="PassbookDTO">
- 		select * from passbook order by num desc
+ 	<select id="getList" resultType="PassbookDTO" parameterType="Pager">
+ 		select * from (select rownum R, P.*
+    		from (select * from passbook where 
+ 				<if test="type='Name'">
+ 					name
+ 				</if>   		
+    		like '%'||#{search}||'%' and num>0 order by num desc) P)
+		where R between #{startRow} and #{lastRow}
+ 	</select>
+ 	
+ 	<select id="getTotalCount" resultType="java.lang.Long" parameterType="Pager">
+ 		select count(num) from passbook
+ 		where 
+ 			<if test="type='Name'">
+ 				name
+ 			</if>
+ 		like '%'||#{search}||'%' and num>0
  	</select>
  	
  	<delete id="setDelete" parameterType="PassbookDTO">

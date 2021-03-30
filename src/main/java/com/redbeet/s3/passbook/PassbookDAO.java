@@ -11,6 +11,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.redbeet.s3.util.Pager;
+
 @Repository
 public class PassbookDAO {
 
@@ -31,8 +33,12 @@ public class PassbookDAO {
 		return passbookDTO;
 	}
 	
-	public List<PassbookDTO> getList() throws Exception {
-		return sqlSession.selectList(NAMESPACE+"getList");
+	public List<PassbookDTO> getList(Pager pager) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getList", pager);
+	}
+	
+	public long getTotalCount(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 	
 	public int setDelete(PassbookDTO passbookDTO) throws Exception {

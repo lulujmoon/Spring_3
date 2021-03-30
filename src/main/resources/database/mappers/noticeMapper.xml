@@ -6,8 +6,41 @@
     
 <mapper namespace="com.redbeet.s3.notice.NoticeDAO">
 	
-	<select id="getList" resultType="NoticeDTO">
-		select * from notice order by num desc
+
+	<select id="getList" resultType="NoticeDTO" parameterType="Pager">
+		select * from
+    (select rownum R, N.* from 
+        (select * from notice where 
+			<choose>
+				<when test="type=='Writer'">
+					writer
+				</when>
+				<when test="type=='Subject'">
+					subject
+				</when>
+				<otherwise>
+					content
+				</otherwise>
+			</choose>
+		 like '%'||#{search}||'%' and num>0 order by num) N)
+        where R between #{startRow} and #{lastRow}
+	</select>
+	
+	<select id="getTotalCount" resultType="java.lang.Long" parameterType="Pager">
+		select count(num) from notice
+		where 
+			<choose>
+				<when test="type=='Writer'">
+					writer
+				</when>
+				<when test="type=='Subject'">
+					subject
+				</when>
+				<otherwise>
+					content
+				</otherwise>
+			</choose>
+			like '%'||#{search}||'%' and num>0
 	</select>
 
 	<select id="getSelect" parameterType="NoticeDTO" resultType="NoticeDTO">

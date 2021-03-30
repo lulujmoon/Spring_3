@@ -10,9 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.redbeet.s3.member.MemberDTO;
+import com.redbeet.s3.util.Pager;
 
 @Controller
 @RequestMapping(value="/notice/**")
@@ -20,11 +22,15 @@ public class NoticeController {
 
 	@Autowired
 	private NoticeService noticeService;
-	//d
+	
 	@RequestMapping(value="noticeList")
-	public void getList(Model model) throws Exception {
-		List<NoticeDTO> li = noticeService.getList();
+	
+	public void getList(Model model, Pager pager) throws Exception {
+
+		List<NoticeDTO> li = noticeService.getList(pager);
 		model.addAttribute("list", li);
+		model.addAttribute("pager", pager);
+
 	}
 	
 	@RequestMapping(value="noticeSelect")
