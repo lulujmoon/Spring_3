@@ -14,12 +14,30 @@
 	<c:import url="./template/header.jsp"></c:import>
 	
 	<div class="container" style="margin-top:30px">
-		<h2>Welcome!</h2>
-
-		<img src="./resources/images/raft.jpg" alt="Raft image">
-
+		
+		<button onclick="go()">BUTTON</button>
+		<button id="btn">Click</button>
+		<button id="btn2">Click</button>
+		<h2>version 5</h2>
 	</div>
 	
-<script type="text/javascript" src="./resources/js/test.js"></script>
+<script type="text/javascript">
+
+	let btn=document.getElementById("btn");
+	let btn2=document.getElementById("btn2");
+	btn.onclick= function (){
+		alert("익명함수");
+	}
+	
+	btn2.addEventListener("click", function(){
+		alert('익명');
+	});
+	
+	
+	function go() {
+			alert("hello");
+	}
+	
+</script>
   </body>
 </html>

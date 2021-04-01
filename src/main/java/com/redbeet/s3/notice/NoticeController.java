@@ -75,4 +75,9 @@ public class NoticeController {
 		return "redirect:./noticeList";
 	}
 	
+	@RequestMapping(value="insertCheck")
+	public void insertCheck() throws Exception {
+		
+	}
+	
 }

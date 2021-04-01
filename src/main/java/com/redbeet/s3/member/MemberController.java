@@ -89,4 +89,9 @@ public class MemberController {
 		return re;
 	}
 	
+	@RequestMapping(value="memberJoinCheck")
+	public void memberJoinCheck() throws Exception {
+		
+	}
+	
 }

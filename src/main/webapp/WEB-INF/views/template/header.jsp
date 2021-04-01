@@ -18,7 +18,7 @@
       </a>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="${pageContext.request.contextPath}/notice/noticeList">Notice</a>
-        <a class="dropdown-item" href="${pageContext.request.contextPath}/member/memberJoin">-</a>
+        <a class="dropdown-item" href="#">-</a>
       </div>
     </li>
 
@@ -30,7 +30,7 @@
       <div class="dropdown-menu">
       	<c:if test="${empty member}">
         <a class="dropdown-item" href="${pageContext.request.contextPath}/member/memberLogin">Login</a>
-        <a class="dropdown-item" href="${pageContext.request.contextPath}/member/memberJoin">Join</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/member/memberJoinCheck">Join</a>
        	</c:if>
        	<c:if test="${not empty member}">
         <a class="dropdown-item" href="${pageContext.request.contextPath}/member/memberPage">My Page</a>

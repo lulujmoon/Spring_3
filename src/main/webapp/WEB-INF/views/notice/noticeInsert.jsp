@@ -31,8 +31,14 @@
 			<button class="btn btn-info">Write</button>
 		</form>
 		</c:if>
+	
+	<button type="submit" class="btn btn-primary" onclick="insertCheck()">Submit</button>
+	<input type="button" value="WRITE" class="btn btn-primary" onclick="insertCheck()">
+
+	<script type="text/javascript" src="../resources/js/insertCheck.js"></script>	
 	</div>
 
+	
 
 
 </body>
