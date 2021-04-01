@@ -5,6 +5,14 @@
 <html>
 <head>
 <c:import url="../template/bootstrap.jsp"></c:import>
+<style>
+	.c1{
+		background-color:red;
+	}
+	.c2{
+		background-color:green;
+	}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
@@ -17,29 +25,24 @@
 		</c:if>
 		<c:if test="${not empty member and member.id eq 'admin'}">
 		<h2>Notice Write Page</h2>
-		<form action="./noticeInsert" method="post">
+		<form action="./noticeInsert" method="post" id="frm">
 			<div class="form-group">
 				<label for="subject">Subject</label>
 				<input type="text" class="form-control" id="subject" name="subject">
+				<small id="subResult" class="form-text text-muted"></small>
 			</div>
 			<div class="form-group">
-   				 <label for="exampleFormControlTextarea1">Content</label>
-  				 <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" name="content"></textarea>
+   				 <label for="content">Content</label>
+  				 <textarea class="form-control" id="content" rows="6" name="content"></textarea>
+ 				<small id="conResult" class="form-text text-muted"></small>
  			</div>
 
-
 			<button class="btn btn-info">Write</button>
+			<button class="btn btn-danger" id="btn">Submit</button>
 		</form>
 		</c:if>
-	
-	<button type="submit" class="btn btn-primary" onclick="insertCheck()">Submit</button>
-	<input type="button" value="WRITE" class="btn btn-primary" onclick="insertCheck()">
-
-	<script type="text/javascript" src="../resources/js/insertCheck.js"></script>	
 	</div>
 
-	
-
-
+<script type="text/javascript" src="../resources/js/noticeInsert.js"></script>
 </body>
 </html>

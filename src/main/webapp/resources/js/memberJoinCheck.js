@@ -36,6 +36,6 @@ for(let c of c1){
 			d1.checked=false;
 		}
 	});
-	
+
 
 }
