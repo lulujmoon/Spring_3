@@ -49,9 +49,11 @@
   <h1>Bootstrap Tutorial</h1>
   <p>Bootstrap is the most popular HTML, CSS...</p>
 </div>
+<button class="btn btn-danger" id="btn">Join</button>
+<br><br>
 </div>
-<button class="btn btn-danger" onclick="check()">Join</button>
+
 <script type="text/javascript" src="../resources/js/memberJoinCheck.js"></script>
-<h1>version 1</h1>
+
 </body>
 </html>

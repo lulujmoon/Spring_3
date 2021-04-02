@@ -1,5 +1,7 @@
 package com.redbeet.s3.member;
 
+import java.util.Random;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -22,10 +24,20 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="memberJoin", method=RequestMethod.POST)
-	public String memberJoin(MemberDTO memberDTO) throws Exception {
-		int result = memberService.memberJoin(memberDTO);
-		System.out.println("회원가입 성공");
-		return "redirect:../";
+	public String memberJoin(MemberDTO memberDTO, Model model) throws Exception {
+//		int result = memberService.memberJoin(memberDTO);
+		Random random = new Random();
+		int result = random.nextInt(2);
+		String path = "./memberJoin";
+		String msg = "회원가입 실패";
+		if(result>0) {
+			msg="회원가입 성공";
+			path = "../";
+		}
+		
+		model.addAttribute("path", path);
+		model.addAttribute("msg", msg);
+		return "common/commonResult";
 	}
 	
 	@RequestMapping(value="memberLogin")

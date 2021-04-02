@@ -4,6 +4,15 @@
  
 let d1=document.getElementById("d1");
 let c1 = document.getElementsByClassName("c1");
+const btn = document.getElementById("btn");
+
+btn.addEventListener("click", function(){
+	if(d1.checked){
+		location.href="./memberJoin";
+	}else{
+		alert("약관에 동의해주세요.")	
+	}
+});
 
 let head = document.getElementById("head");
 head.addEventListener("click", function(){
