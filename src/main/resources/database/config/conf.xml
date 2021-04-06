@@ -10,7 +10,9 @@
 		<typeAlias type="com.redbeet.s3.member.MemberDTO" alias="MemberDTO"/>
 		<typeAlias type="com.redbeet.s3.passbook.PassbookDTO" alias="PassbookDTO"/> 
 		<typeAlias type="com.redbeet.s3.account.AccountDTO" alias="AccountDTO"/>
-		<typeAlias type="com.redbeet.s3.notice.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="com.redbeet.s3.board.notice.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="com.redbeet.s3.board.qna.QnaDTO" alias="QnaDTO"/>
 		<typeAlias type="com.redbeet.s3.util.Pager" alias="Pager"/>
+		<typeAlias type="com.redbeet.s3.board.BoardDTO" alias="BoardDTO"/>
 	</typeAliases>
 </configuration>

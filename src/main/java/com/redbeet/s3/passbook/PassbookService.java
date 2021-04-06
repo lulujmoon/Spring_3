@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.redbeet.s3.util.Pager;
+import com.redbeet.s3.util.OldPager;
 
 @Service
 public class PassbookService {
@@ -13,7 +13,7 @@ public class PassbookService {
 	@Autowired
 	private PassbookDAO passbookDAO;
 	
-	public List<PassbookDTO> getList(Pager pager) throws Exception {
+	public List<PassbookDTO> getList(OldPager pager) throws Exception {
 		int perPage = 20;
 		int perBlock = 10;
 		

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="com.redbeet.s3.board.qna.qnaDAO">
+	
+
+	<select id="getList" parameterType="Pager" resultType="QnaDTO">
+		select *
+		from (select rownum, Q.*
+		from (select * from qna where
+			<choose>
+				<when test="type=='Subject'">
+					subject
+				</when>
+				<when test="type=='Content'">
+					content
+				</when>
+				<otherwise>
+					name
+				</otherwise>
+			</choose>
+			like '%'||#{search}||'%' and num>0
+			order by ref desc, step asc) Q)
+		where rownum between #{startRow} and #{lastRow}
+	</select>
+	
+	<select id="getTotalCount" parameterType="Pager" resultType="java.lang.Long">
+		select count(num)
+		from qna where
+			<choose>
+				<when test="type=='Subject'">
+					subject
+				</when>
+				<when test="type=='Content'">
+					content
+				</when>
+				<otherwise>
+					name
+				</otherwise>
+			</choose>
+			like '%'||#{search}||'%' and num>0
+		
+	</select>
+	
+	
+	
+	<select id="getSelect" parameterType="QnaDTO" resultType="QnaDTO">
+		select * from qna where num=#{num}
+	</select>
+	
+	<update id="setHitUpdate" parameterType="QnaDTO">
+		update qna set hit=hit+1 where num=#{num}
+	</update>
+	
+	<update id="setUpdate" parameterType="QnaDTO">
+		update qna set subject=#{subject}, content=#{content}
+	</update>
+	
+	<insert id="setInsert" parameterType="QnaDTO">
+		insert into qna values (qna_seq.nextval, #{subject}, #{name}, #{content}, sysdate, 0, qna_seq.currval, 0, 0)
+	</insert>
+	
+	<delete id="setDelete" parameterType="QnaDTO">
+		delete qna where num=#{num}
+	</delete>
+	
+	<update id="setReplyUpdate" parameterType="QnaDTO">
+		update qna set step=step+1 where ref=#{ref} and step>#{step}
+	</update>
+	
+	<insert id="setReply" parameterType="QnaDTO">
+		insert into qna values (qna_seq.nextval, #{subject}, #{name}, #{content}, sysdate, 0, #{ref}, #{step}, #{depth})
+	</insert>
+ </mapper>

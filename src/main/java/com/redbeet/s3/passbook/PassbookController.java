@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.redbeet.s3.util.Pager;
+import com.redbeet.s3.util.OldPager;
 
 @Controller
 @RequestMapping(value="/passbook/**")
@@ -19,7 +19,7 @@ public class PassbookController {
 	private PassbookService passbookService;
 	
 	@RequestMapping("passbookList")
-	public void getList(Model model, Pager pager) throws Exception {
+	public void getList(Model model, OldPager pager) throws Exception {
 		List<PassbookDTO> ar = passbookService.getList(pager);
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);

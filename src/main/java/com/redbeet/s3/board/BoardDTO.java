@@ -1,9 +1,9 @@
-package com.redbeet.s3.notice;
+package com.redbeet.s3.board;
 
 import java.sql.Date;
 
-public class NoticeDTO {
-	
+public class BoardDTO {
+
 	private long num;
 	private String subject;
 	private String name;
@@ -49,5 +49,4 @@ public class NoticeDTO {
 	}
 	
 	
-
 }
