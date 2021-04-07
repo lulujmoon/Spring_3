@@ -16,6 +16,12 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.redbeet.s3.member.MemberDAO.";
 	
+	//setFileInsert
+	public int setFileInsert(MemberFileDTO memberFileDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE+"setFileInsert", memberFileDTO);
+	}
+	
+	
 	public int memberJoin(MemberDTO memberDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"memberJoin", memberDTO);
 		

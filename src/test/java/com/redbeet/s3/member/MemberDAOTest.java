@@ -24,15 +24,15 @@ public class MemberDAOTest extends MyAbstractTest{
 //		assertEquals(1, result);
 //	}
 	
-	@Test
-	public void memberLoginTest() throws Exception {
-		MemberDTO memberDTO = new MemberDTO();
-		memberDTO.setId("kaya2893");
-		memberDTO.setPw("kaya6801");
-		memberDTO = memberDAO.memberLogin(memberDTO);
-		assertNotNull(memberDTO.getEmail());
-		
-	}
+//	@Test
+//	public void memberLoginTest() throws Exception {
+//		MemberDTO memberDTO = new MemberDTO();
+//		memberDTO.setId("kaya2893");
+//		memberDTO.setPw("kaya6801");
+//		memberDTO = memberDAO.memberLogin(memberDTO);
+//		assertNotNull(memberDTO.getEmail());
+//		
+//	}
 	
 //	@Test
 //	public void memberDelete() throws Exception {
@@ -57,4 +57,13 @@ public class MemberDAOTest extends MyAbstractTest{
 //		assertEquals(1, result);
 //	}
 
+	@Test
+	public void setFileInsertTest() throws Exception {
+		MemberFileDTO mDTO = new MemberFileDTO();
+		mDTO.setId("kaya2893");
+		mDTO.setFileName("11");
+		mDTO.setOriginName("22");
+		int result = memberDAO.setFileInsert(mDTO);
+		assertNotEquals(0, result);
+	}
 }

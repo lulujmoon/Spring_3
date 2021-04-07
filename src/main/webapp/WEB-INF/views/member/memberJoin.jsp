@@ -18,7 +18,7 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 	<div class="container">
-	<form action="./memberJoin" method="post" id="frm">
+	<form action="./memberJoin" method="post" id="frm" enctype="multipart/form-data">
   <div class="form-group">
   <!-- ID는 6글자 이상이어야 한다. -->
     <label for="id">ID</label>
@@ -59,11 +59,16 @@
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   	<small id="idHelp" class="form-text text-muted">We'll never share your information with anyone else.</small>
   </div>
-  <input type="button" value="Join" id="btn" class="btn btn-info">
+   <div class="form-group">
+    <label for="avatar">Avatar</label>
+    <input type="file" class="form-control etc" id="avatar" name="avatar">
+  </div>
+
+  <input type="submit" value="Join" id="btn" class="btn btn-info">
  
 </form>
 	</div>
 	
-	<script type="text/javascript" src="../resources/js/memberJoin.js"></script>
+	<!-- <script type="text/javascript" src="../resources/js/memberJoin.js"></script> -->
 </body>
 </html>

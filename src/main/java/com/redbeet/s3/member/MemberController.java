@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping(value="/member/**")
@@ -24,10 +25,15 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="memberJoin", method=RequestMethod.POST)
-	public String memberJoin(MemberDTO memberDTO, Model model) throws Exception {
-//		int result = memberService.memberJoin(memberDTO);
+	public String memberJoin(MemberDTO memberDTO, Model model, MultipartFile avatar, HttpSession session) throws Exception {
+		int result = memberService.memberJoin(memberDTO, avatar, session);
+		System.out.println(avatar.getName());
+		System.out.println(avatar.getOriginalFilename());
+		System.out.println(avatar.getSize());
+		System.out.println(avatar.isEmpty());
+		
 		Random random = new Random();
-		int result = random.nextInt(2);
+		result = random.nextInt(2);
 		String path = "./memberJoin";
 		String msg = "회원가입 실패";
 		if(result>0) {

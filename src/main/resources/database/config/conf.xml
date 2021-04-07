@@ -14,5 +14,6 @@
 		<typeAlias type="com.redbeet.s3.board.qna.QnaDTO" alias="QnaDTO"/>
 		<typeAlias type="com.redbeet.s3.util.Pager" alias="Pager"/>
 		<typeAlias type="com.redbeet.s3.board.BoardDTO" alias="BoardDTO"/>
+		<typeAlias type="com.redbeet.s3.member.MemberFileDTO" alias="MemberFileDTO"/>
 	</typeAliases>
 </configuration>

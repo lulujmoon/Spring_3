@@ -51,16 +51,16 @@ public class NoticeDAOTest extends MyAbstractTest {
 //	}
 	 
 
-//	@Test
-//	public void setUpdateTest() throws Exception {
-//		NoticeDTO noticeDTO = new NoticeDTO();
-//		noticeDTO.setNum(4);
-//		noticeDTO.setSubject("제목3");
-//		noticeDTO.setName("관리자");
-//		noticeDTO.setContent("내용3입니다.");
-//		int result = noticeDAO.setUpdate(noticeDTO);
-//		assertNotEquals(0, result);
-//	}
+	@Test
+	public void setUpdateTest() throws Exception {
+		NoticeDTO noticeDTO = new NoticeDTO();
+		noticeDTO.setNum(4);
+		noticeDTO.setSubject("제목3");
+		noticeDTO.setName("관리자");
+		noticeDTO.setContent("내용3입니다.");
+		int result = noticeDAO.setUpdate(noticeDTO);
+		assertNotEquals(0, result);
+	}
 
 //	@Test
 //	public void setDeleteTest() throws Exception{

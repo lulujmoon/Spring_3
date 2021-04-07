@@ -22,4 +22,7 @@
  		update member set pw=#{pw}, name=#{name}, phone=#{phone}, email=#{email} where id=#{id}
  	</update>
  
+ 	<insert id="setFileInsert" parameterType="MemberFileDTO">
+ 		insert into memberFile values (fn_seq.nextval, #{id}, #{fileName}, #{originName})
+ 	</insert>
  </mapper>
