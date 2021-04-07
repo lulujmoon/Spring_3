@@ -62,7 +62,7 @@
 				frm.method="post";
 				frm.submit();
 		    }
-		})
+		});
 
 	</script>
 </body>

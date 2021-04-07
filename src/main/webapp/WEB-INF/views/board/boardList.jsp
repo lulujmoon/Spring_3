@@ -49,36 +49,64 @@
 	<div class="container">
 	<ul class="pagination">
 	<c:if test="${pager.pre}">
- 	 	<li class="page-item"><a class="page-link" href="/s3/${board}/${board}List?curPage=${pager.startNum-1}&type=${pager.type}&search=${pager.search}">Previous</a></li>
+ 	 	<li class="page-item"><a class="page-link p" title="${pager.startNum-1}" href="#">Previous</a></li>
 	</c:if>
 	<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
- 		 <li class="page-item"><a class="page-link" href="/s3/${board}/${board}List?curPage=${i}&type=${pager.type}&search=${pager.search}">${i}</a></li>
+ 		 <li class="page-item"><a class="page-link p" href="#" title="${i}">${i}</a></li>
 	</c:forEach>
 	<c:if test="${pager.next}">
-  		<li class="page-item"><a class="page-link" href="/s3/${board}/${board}List?curPage=${pager.lastNum+1}&type=${pager.type}&search=${pager.search}">Next</a></li>
+  		<li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">Next</a></li>
 	</c:if>
 </ul>
 
 <div class="input-group mt-3 mb-3">
-<form action="./${board}List" class="form-inline">
+<form id="frm" action="./${board}List" class="form-inline">
+	<input type="hidden" name="curPage" id="curPage" value="1">
   <div class="input-group-prepend">
-   <select class="form-control" id="sel1" name="type">
-    <option selected="selected">Subject</option>
-    <option>Content</option>
-    <option>Writer</option>
+   <select class="form-control" id="type" name="type">
+    <option class="sel">Subject</option>
+    <option class="sel">Content</option>
+    <option class="sel">Name</option>
   </select>
   </div>
-  <input type="text" class="form-control" name="search">
+  <input type="text" class="form-control" name="search" id="search" value="${pager.search}">
     <div class="input-group-append">
     <button class="btn btn-success" type="submit">Search</button>
   </div>
  </form> 
 </div>
 
+<h2>version 2</h2>
 
 </div>
 
+<script type="text/javascript">
+	let type = '${pager.type}';
 
+	$(".sel").each(function(){
+		 let t = $(this).text();
+		 if(t == type){
+		     $(this).prop("selected", true);
+		 }
+	});
+	$(".p").click(function(){
+	    //curPage, type, search
+		 let curPage = $(this).attr("title");
+		 $("#curPage").val(curPage);
+		 let search = '${pager.search}';
+		 $("#frm").submit();
+	}
+
+	    
+/* 	    $("#curPage").val(curPage);
+	    $("#type").val(type);
+	    $("#search").val(search);
+	    $("#frm").submit(); */
+	    
+	    
+	    //location.href="./${board}List?curPage="+curPage+"&type=${pager.type}&search=${pager.search}";
+	})
+</script>
 
 </body>
 </html>

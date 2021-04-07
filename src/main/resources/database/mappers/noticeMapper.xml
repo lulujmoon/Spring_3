@@ -12,8 +12,8 @@
     (select rownum R, N.* from 
         (select * from notice where 
 			<choose>
-				<when test="type=='Writer'">
-					writer
+				<when test="type=='Name'">
+					name
 				</when>
 				<when test="type=='Subject'">
 					subject

@@ -5,11 +5,11 @@ import java.sql.Date;
 public class BoardDTO {
 
 	private long num;
-	private String subject;
-	private String name;
+	private String Subject;
+	private String Name;
 	private Date regdate;
 	private long hit;
-	private String content;
+	private String Content;
 	
 	public long getNum() {
 		return num;
@@ -18,16 +18,16 @@ public class BoardDTO {
 		this.num = num;
 	}
 	public String getSubject() {
-		return subject;
+		return Subject;
 	}
 	public void setSubject(String subject) {
-		this.subject = subject;
+		this.Subject = subject;
 	}
 	public String getName() {
-		return name;
+		return Name;
 	}
 	public void setName(String name) {
-		this.name = name;
+		this.Name = name;
 	}
 	public Date getRegdate() {
 		return regdate;
@@ -42,10 +42,10 @@ public class BoardDTO {
 		this.hit = hit;
 	}
 	public String getContent() {
-		return content;
+		return Content;
 	}
 	public void setContent(String content) {
-		this.content = content;
+		this.Content = content;
 	}
 	
 	

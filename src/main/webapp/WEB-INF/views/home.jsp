@@ -8,35 +8,58 @@
   <c:import url="./template/bootstrap.jsp"></c:import>
   <link rel="stylesheet" href="./resources/css/test.css">
     <title>Hello, world!</title>
-
+	<style type="text/css">
+		#d1{
+			width:200px;
+			height:200px;
+			background-color:black;
+			overflow:hidden;
+		}
+		#d2{
+			width:100px;
+			height:100px;
+			background-color:pink;
+			margin : 50px;
+		}
+	</style>
   </head>
   <body>
 	<c:import url="./template/header.jsp"></c:import>
 	
 	<div class="container" style="margin-top:30px">
 		
-		<button onclick="go()">BUTTON</button>
-		<button id="btn">Click</button>
-		<button id="btn2">Click</button>
-		<h2>version 5</h2>
+		<button class="b">BUTTON</button>
+		<button id="btn" class="b">Click</button>
+		<button id="btn2" class="b">Click2</button>
+		<h2 id="t">version 5</h2>
+		
+		<ol id="result">
+			<li>A</li>
+		</ol>
+		
+		<select id="mon">
+		
+		</select>
+	
+	<div id="d1">
+		<div id="d2"></div>
+	</div>
+	
 	</div>
 	
 <script type="text/javascript">
-
-	let btn=document.getElementById("btn");
-	let btn2=document.getElementById("btn2");
-	btn.onclick= function (){
-		alert("익명함수");
-	}
 	
-	btn2.addEventListener("click", function(){
-		alert('익명');
+	$("#btn2").click(function(){
+	    $("#result").append('<li>Go</li>');
 	});
 	
+	let mon = 1;
 	
-	function go() {
-			alert("hello");
+	for(let i=1;i<13;i++){
+	    $("#mon").append("<option>"+i+"</option");
 	}
+	
+
 	
 </script>
   </body>

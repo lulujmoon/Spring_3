@@ -15,14 +15,14 @@
 
 <div class="form-check">
   <label class="form-check-label">
-    <input type="checkbox" class="form-check-input " value="" id="d1">전체 동의
+    <input type="checkbox" class="form-check-input " value="" id="all">전체 동의
   </label>
 </div>
 
 <br>
 <div class="form-check">
   <label class="form-check-label">
-    <input type="checkbox" class="form-check-input c1" value="">동의
+    <input type="checkbox" class="form-check-input check" value="">동의
   </label>
 </div>
 <div class="jumbotron">
@@ -32,7 +32,7 @@
 
 <div class="form-check">
   <label class="form-check-label">
-    <input type="checkbox" class="form-check-input c1" value="">동의
+    <input type="checkbox" class="form-check-input check" value="">동의
   </label>
 </div>
 <div class="jumbotron">
@@ -42,7 +42,7 @@
 
 <div class="form-check">
   <label class="form-check-label">
-    <input type="checkbox" class="form-check-input c1" value="">동의
+    <input type="checkbox" class="form-check-input check" value="">동의
   </label>
 </div>
 <div class="jumbotron">
@@ -53,7 +53,7 @@
 <br><br>
 </div>
 
-<script type="text/javascript" src="../resources/js/memberJoinCheck.js"></script>
+<script type="text/javascript" src="../resources/jquery/memberJoinCheck.js"></script>
 
 </body>
 </html>
