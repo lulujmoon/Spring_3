@@ -28,10 +28,10 @@
 		</c:if>
 		
 		<h2>${board} Write Page</h2>
-		<form action="./${board}Insert" method="post" id="frm">
+		<form action="./${board}Insert" method="post" id="frm" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="name">Name</label>
-				<input type="text" class="form-control myCheck" id="name" name="name" value="${member.name}" readonly="readonly">
+				<input type="text" class="form-control" id="name" name="name" value="${member.name}" readonly="readonly">
 				<small id="subResult" class="form-text text-muted"></small>
 			</div>
 			<div class="form-group">
@@ -57,7 +57,7 @@
 	<div id="sample">
 		<div class="input-group">
  		 <div class="custom-file">
-   		 <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+   		 <input type="file" name="files" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
    		 <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
   		</div>
  		<div class="input-group-append delete">

@@ -33,7 +33,10 @@
 		<td>Email</td>
 		<td> : ${sessionScope.member.email }</td>
 	</tr>
-	
+	<tr>
+		<td></td>
+		<td><img alt="no" src="../resources/upload/member/${member.memberFileDTO.originName}"></td>
+	</tr>
 	</table>
 	<br><br>
 	<a href="./memberUpdate">Update Information</a><br>

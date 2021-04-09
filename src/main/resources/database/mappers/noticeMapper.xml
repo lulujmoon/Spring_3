@@ -43,13 +43,38 @@
 			like '%'||#{search}||'%' and num>0
 	</select>
 
-	<select id="getSelect" parameterType="BoardDTO" resultType="NoticeDTO">
-		select * from notice where num=#{num}
+	<select id="getSelect" parameterType="BoardDTO" resultMap="selectResult">
+		select N.*, NF.*
+		from notice N left join noticeFiles NF
+		on N.num = NF.num
+		where N.num=#{num}
 	</select>
 	
+	<resultMap type="NoticeDTO" id="selectResult">
+		<id property="num" column="num"/>
+		<result property="Subject" column="subject"/>
+		<result property="Name" column="name"/>
+		<result property="regdate" column="regdate"/>
+		<result property="hit" column="hit"/>
+		<result property="Content" column="content"/>
+		<collection property="boardFiles" javaType="java.util.List" ofType="BoardFileDTO">
+			<id property="fileNum" column="fileNum"/>
+			<result property="fileName" column="fileName"/>
+			<result property="originName" column="originName"/>
+		</collection>
+	</resultMap>
+	
 	<insert id="setInsert" parameterType="BoardDTO">
-		insert into notice values (ntc_seq.nextval, #{subject}, '관리자', sysdate, 0, #{content})
+		insert into notice values (#{num}, #{subject}, '관리자', sysdate, 0, #{content})
 	</insert>
+	
+	<insert id="setFileInsert" parameterType="BoardFileDTO">
+		insert into noticeFiles values (file_seq.nextval, #{num}, #{fileName}, #{originName})
+	</insert>
+	
+	<select id="getNum" resultType="java.lang.Long">
+		select ntc_seq.nextval from dual
+	</select>
 	
 	<update id="setUpdate" parameterType="BoardDTO">
 		update notice set subject=#{subject}, content=#{content} where num=#{num}

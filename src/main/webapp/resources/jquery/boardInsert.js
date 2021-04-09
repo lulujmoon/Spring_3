@@ -7,7 +7,9 @@
 	let subject = $("#subject").val() !="";
 	let content = $("#content").val().length!=0;*/
 	
-	$(".myCheck").each(function(s1){
+	$("#frm").submit();
+	
+/*	$(".myCheck").each(function(s1){
 		if($(this).val()==""){
 			result = false;
 		}
@@ -17,9 +19,9 @@
 		$("#frm").submit();
 	}else{
 		alert('입력사항을 확인하세요.');
-	}
-
+	}*/
 });
+
 let r = 1;
 
 $("#add").click(function(){

@@ -5,9 +5,11 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.redbeet.s3.board.BoardDAO;
 import com.redbeet.s3.board.BoardDTO;
+import com.redbeet.s3.board.BoardFileDTO;
 import com.redbeet.s3.util.OldPager;
 import com.redbeet.s3.util.Pager;
 
@@ -52,6 +54,14 @@ public class QnaDAO implements BoardDAO {
 	public int setInsert(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.insert(NAMESPACE+"setInsert", boardDTO);
+	}
+	
+	public long getNum() throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getNum");
+	}
+	
+	public int setFileInsert(BoardFileDTO boardFileDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE+"setFileInsert", boardFileDTO);
 	}
 
 	@Override

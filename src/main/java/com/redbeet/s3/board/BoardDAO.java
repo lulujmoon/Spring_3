@@ -2,6 +2,8 @@ package com.redbeet.s3.board;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.redbeet.s3.util.OldPager;
 import com.redbeet.s3.util.Pager;
 

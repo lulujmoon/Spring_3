@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.redbeet.s3.board.BoardDTO;
@@ -48,8 +49,9 @@ public class QnaController {
 	
 	//setInsert post 버전도 만들기
 	@PostMapping(value="qnaInsert")
-	public String setInsert(BoardDTO boardDTO) throws Exception {
-		qnaService.setInsert(boardDTO);
+	public String setInsert(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
+		
+		qnaService.setInsert(boardDTO, files);
 		return "redirect:./qnaList";
 	}
 	
@@ -74,8 +76,6 @@ public class QnaController {
 		}
 		return mv;
 	}
-	
-	
 	
 	@GetMapping(value="qnaSelect")
 	public ModelAndView getSelect(BoardDTO boardDTO) throws Exception{

@@ -32,8 +32,6 @@ public class MemberController {
 		System.out.println(avatar.getSize());
 		System.out.println(avatar.isEmpty());
 		
-		Random random = new Random();
-		result = random.nextInt(2);
 		String path = "./memberJoin";
 		String msg = "회원가입 실패";
 		if(result>0) {
@@ -80,7 +78,7 @@ public class MemberController {
 	@RequestMapping("memberDelete")
 	public String memberDelete(HttpSession session) throws Exception {
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		int result = memberService.memberDelete(memberDTO);
+		int result = memberService.memberDelete(memberDTO, session);
 		String re = "redirect:./memberPage";
 		if(result==1) {
 		System.out.println("삭제 완료");

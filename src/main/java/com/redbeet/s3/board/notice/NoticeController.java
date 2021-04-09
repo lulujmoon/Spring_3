@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.redbeet.s3.board.BoardDTO;
@@ -54,9 +55,13 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value="noticeInsert", method=RequestMethod.POST)
-	public String setInsert(NoticeDTO noticeDTO, Model model) throws Exception {
-		int result = noticeService.setInsert(noticeDTO);
+	public String setInsert(BoardDTO boardDTO, Model model, MultipartFile[] files ) throws Exception {
 		
+		for(MultipartFile mf: files) {
+			System.out.println(mf.getOriginalFilename());
+		}
+		
+		int result = noticeService.setInsert(boardDTO, files);
 		String msg = "입력 실패";
 		String path = "./noticeInsert";
 		if(result>0) {

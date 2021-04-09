@@ -10,9 +10,32 @@
  		insert into member values (#{id}, #{pw}, #{name}, #{phone}, #{email})
  	</insert>
  	
- 	<select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
- 		select * from member where id=#{id} and pw=#{pw}
+ 	<select id="memberLogin" parameterType="MemberDTO" resultMap="memberLoginResult">
+ 		select M.*, MF.*
+ 		from member M left join memberFile MF
+ 		on M.id = MF.id
+ 		where M.id=#{id} and M.pw=#{pw}
  	</select>
+ 	
+ 	<resultMap type="MemberDTO" id="memberLoginResult">
+ 		<id property="id" column="id"/>
+ 		<result property="pw" column="pw"/>
+ 		<result property="name" column="name"/>
+ 		<result property="phone" column="phone"/>
+ 		<result property="email" column="email"/>
+ 		<association property="memberFileDTO" javaType="MemberFileDTO">
+ 			
+ 		</association>
+ 	</resultMap>
+ 	
+ 	<resultMap type="MemberFileDTO" id="memberFileResult">
+ 		<id property="num" column="num"/>
+ 		<result property="fileName" column="fileName"/>
+ 		<result property="originName" column="originName"/>
+ 	</resultMap>
+ 	
+
+ 	
  	
  	<delete id="memberDelete" parameterType="MemberDTO">
  		delete member where id=#{id} and pw=#{pw}
@@ -25,4 +48,12 @@
  	<insert id="setFileInsert" parameterType="MemberFileDTO">
  		insert into memberFile values (fn_seq.nextval, #{id}, #{fileName}, #{originName})
  	</insert>
+ 	
+ 	<select id="memberLoginFile" resultType="MemberFileDTO" parameterType="MemberDTO">
+ 		select * from memberFile where id=#{id}
+ 	</select>
+ 	
+ 	<select id="getMemberFile" parameterType="MemberDTO">
+ 		select fileName from memberFile where id=#{id}
+ 	</select>
  </mapper>

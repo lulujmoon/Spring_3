@@ -2,11 +2,16 @@ package com.redbeet.s3.board.qna;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.redbeet.s3.board.BoardDTO;
+import com.redbeet.s3.board.BoardFileDTO;
 import com.redbeet.s3.board.BoardService;
+import com.redbeet.s3.util.FileManager;
 import com.redbeet.s3.util.OldPager;
 import com.redbeet.s3.util.Pager;
 
@@ -15,6 +20,12 @@ public class QnaService implements BoardService {
 
 	@Autowired
 	private QnaDAO qnaDAO;
+	
+	@Autowired
+	private FileManager fileManager;
+	
+	@Autowired
+	private HttpSession session;
 
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
@@ -50,9 +61,22 @@ public class QnaService implements BoardService {
 	}
 
 	@Override
-	public int setInsert(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return qnaDAO.setInsert(boardDTO);
+	public int setInsert(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
+		
+		int result = qnaDAO.setInsert(boardDTO);
+		
+		for(MultipartFile mf : files) {
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			String fileName = fileManager.save("qna", mf, session);
+			
+			boardFileDTO.setNum(boardDTO.getNum());
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOriginName(mf.getOriginalFilename());
+			
+			result = qnaDAO.setFileInsert(boardFileDTO);
+		}
+		
+		return result;
 	}
 
 	@Override

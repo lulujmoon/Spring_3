@@ -33,6 +33,13 @@
 				<tr>
 					<td colspan="5">${post.content}</td>
 				</tr>
+				<c:forEach items="${post.boardFiles}" var="file">
+				<tr>
+					<td colspan="5">
+						<a href="../resources/upload/${board}/${file.fileName}">${file.fileName}</a>
+					</td>
+				</tr>
+				</c:forEach>
 		</tbody>
 	</table>
 

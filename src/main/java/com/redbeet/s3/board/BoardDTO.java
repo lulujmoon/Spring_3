@@ -1,6 +1,7 @@
 package com.redbeet.s3.board;
 
 import java.sql.Date;
+import java.util.List;
 
 public class BoardDTO {
 
@@ -10,7 +11,24 @@ public class BoardDTO {
 	private Date regdate;
 	private long hit;
 	private String Content;
+	private BoardFileDTO boardFileDTO;
+	private List<BoardFileDTO> boardFiles;
+
+	public List<BoardFileDTO> getBoardFiles() {
+		return boardFiles;
+	}
+
+	public void setBoardFiles(List<BoardFileDTO> boardFiles) {
+		this.boardFiles = boardFiles;
+	}
 	
+	
+	public BoardFileDTO getBoardFileDTO() {
+		return boardFileDTO;
+	}
+	public void setBoardFileDTO(BoardFileDTO boardFileDTO) {
+		this.boardFileDTO = boardFileDTO;
+	}
 	public long getNum() {
 		return num;
 	}

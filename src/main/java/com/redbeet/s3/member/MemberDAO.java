@@ -32,8 +32,16 @@ public class MemberDAO {
 	
 	}
 	
+	public MemberFileDTO memberLoginFile(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"memberLoginFile", memberDTO);
+	}
+	
 	public int memberDelete(MemberDTO memberDTO) throws Exception {
 		return sqlSession.delete(NAMESPACE+"memberDelete", memberDTO);
+	}
+	
+	public MemberFileDTO getMemberFile(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getMemberFile", memberDTO);
 	}
 	
 	public int memberUpdate(MemberDTO memberDTO) throws Exception {

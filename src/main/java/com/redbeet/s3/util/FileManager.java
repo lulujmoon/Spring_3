@@ -13,9 +13,11 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 public class FileManager {
 	
-	public void save(String name, MultipartFile multipartFile, HttpSession session) throws Exception {
+	public String save(String name, MultipartFile multipartFile, HttpSession session) throws Exception {
 		//1. 경로 설정
 		String path = session.getServletContext().getRealPath("resources/upload/"+name);
+		System.out.println(path);
+		
 		
 		File file = new File(path);
 		if(!file.exists()) {
@@ -41,6 +43,20 @@ public class FileManager {
 		 * FileCopyUtils.copy(multipartFile.getBytes(), file); */
 		
 		multipartFile.transferTo(file);
+		
+		return fileName;
+	}
+	
+	
+	public boolean delete(String name, String fileName, HttpSession session) throws Exception {
+		//1. 경로 설정
+		String path = session.getServletContext().getRealPath("resources/upload/"+name);
+		File file = new File(path, fileName);
+		boolean check = false;
+		if(file.exists()) {
+			check = file.delete();
+		}
+		return check;
 	}
 
 }

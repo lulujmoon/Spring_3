@@ -50,15 +50,11 @@
 <script type="text/javascript">
 	
 	$("#btn2").click(function(){
-	    $("#result").append('<li>Go</li>');
+	   $.get("./test?num=1", function(data){
+	       console.log(data);
+	       $("#d2").html(data);
+	   });
 	});
-	
-	let mon = 1;
-	
-	for(let i=1;i<13;i++){
-	    $("#mon").append("<option>"+i+"</option");
-	}
-	
 
 	
 </script>
