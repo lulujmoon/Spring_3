@@ -49,15 +49,33 @@
 	<a href="./${board}Reply?num=${post.num}" class="btn btn-info">Reply</a>
 	</c:if>
 	<a href="./${board}List" class="btn btn-info">List</a>
-	</div>
+	
 	
 	<form action="./${board}Delete" id="frm">
 		<input type="hidden" name="num" value="${post.num}">
 	</form>
 	
+	<!-- comments List -->
+	<div id="comments" title="${post.num}">
 	</div>
 	
+	<div class="form-group">
+ 	 <label for="usr">Name:</label>
+ 	 <input type="text" class="form-control" id="usr">
+	</div>
 	
+	<div class="form-group">
+ 	 <label for="comment">Comment:</label>
+ 	 <textarea class="form-control" rows="5" id="comment"></textarea>
+	</div>
+	
+	<button type="button" class="btn btn-info" id="write">Write</button>
+	
+</div>
+	
+	
+	
+	<script type="text/javascript" src="../resources/jquery/comments.js"></script>
 	<script type="text/javascript">
 		const del = document.getElementById("del");
 		const del2 = document.getElementById("del2");

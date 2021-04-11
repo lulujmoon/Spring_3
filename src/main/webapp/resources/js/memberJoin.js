@@ -17,10 +17,9 @@ let pwcr = document.getElementById("pwcResult");
 	if(id.value.length<6){
 		idr.innerText = "6글자 이상 입력하세요";
 		idr.setAttribute("class", "r1");
-	}else{
-		idr.innerText="사용할 수 있는 ID입니다.";
-		idr.setAttribute("class", "r2");
-	}
+		}else{
+			idr.innerText=" ";
+		}
 });
 
 pw.addEventListener("blur", function(){
@@ -75,5 +74,21 @@ btn.addEventListener("click", function(){
 	}else{
 		alert("입력사항을 확인하세요.");	
 	}
-})
+});
 
+
+//ID 중복 확인
+	$("#id").blur(function(){
+		let id = $("#id").val();
+
+		$.get("./memberIdCheck?id="+id, function(result){
+			result=result.trim();
+			if(result=='0'){
+				result='사용할 수 없는 아이디입니다.';
+			}else if(result=='1'){
+				result="사용할 수 있는 아이디입니다.";
+			}
+			$("#idCheckResult").text(result);
+			$("#idCheckResult").attr("class", "r2");
+		});
+	});

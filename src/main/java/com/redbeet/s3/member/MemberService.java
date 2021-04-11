@@ -55,4 +55,8 @@ public class MemberService {
 		return memberDAO.memberUpdate(memberDTO);
 	}
 	
+	public MemberDTO memberIdCheck(MemberDTO memberDTO) throws Exception {
+		return memberDAO.memberIdCheck(memberDTO);
+	}
+	
 }

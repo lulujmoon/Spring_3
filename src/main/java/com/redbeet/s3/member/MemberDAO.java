@@ -47,4 +47,8 @@ public class MemberDAO {
 	public int memberUpdate(MemberDTO memberDTO) throws Exception {
 		return sqlSession.update(NAMESPACE+"memberUpdate", memberDTO);
 	}
+	
+	public MemberDTO memberIdCheck(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"memberIdCheck", memberDTO);
+	}
 }

@@ -16,5 +16,6 @@
 		<typeAlias type="com.redbeet.s3.board.BoardDTO" alias="BoardDTO"/>
 		<typeAlias type="com.redbeet.s3.member.MemberFileDTO" alias="MemberFileDTO"/>
 		<typeAlias type="com.redbeet.s3.board.BoardFileDTO" alias="BoardFileDTO"/>
+		<typeAlias type="com.redbeet.s3.board.comments.CommentsDTO" alias="CommentsDTO"/>
 	</typeAliases>
 </configuration>

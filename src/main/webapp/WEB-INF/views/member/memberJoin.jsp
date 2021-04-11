@@ -24,6 +24,8 @@
     <label for="id">ID</label>
     <input type="text" name="id" class="form-control" id="id" aria-describedby="idHelp">
     <small id="idResult" class="form-text text-muted"></small>
+    <br>
+    <small id="idCheckResult" class="form-text text-muted"></small>
   </div>
   <div class="form-group">
     <label for="pw">Password</label>
@@ -69,6 +71,6 @@
 </form>
 	</div>
 	
-	<!-- <script type="text/javascript" src="../resources/js/memberJoin.js"></script> -->
+	<script type="text/javascript" src="../resources/js/memberJoin.js"></script>
 </body>
 </html>
