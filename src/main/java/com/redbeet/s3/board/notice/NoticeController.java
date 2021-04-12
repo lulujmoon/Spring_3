@@ -75,8 +75,7 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value="noticeUpdate")
-	public String setUpdate(BoardDTO boardDTO, Model model, HttpServletRequest request) throws Exception {
-		boardDTO.setNum(Long.parseLong(request.getParameter("num")));
+	public String setUpdate(BoardDTO boardDTO, Model model) throws Exception {
 		boardDTO = noticeService.getSelect(boardDTO);
 		model.addAttribute("post", boardDTO);
 		model.addAttribute("board", "notice");

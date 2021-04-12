@@ -11,7 +11,6 @@ public class BoardDTO {
 	private Date regdate;
 	private long hit;
 	private String Content;
-	private BoardFileDTO boardFileDTO;
 	private List<BoardFileDTO> boardFiles;
 
 	public List<BoardFileDTO> getBoardFiles() {
@@ -22,13 +21,6 @@ public class BoardDTO {
 		this.boardFiles = boardFiles;
 	}
 	
-	
-	public BoardFileDTO getBoardFileDTO() {
-		return boardFileDTO;
-	}
-	public void setBoardFileDTO(BoardFileDTO boardFileDTO) {
-		this.boardFileDTO = boardFileDTO;
-	}
 	public long getNum() {
 		return num;
 	}

@@ -23,11 +23,16 @@
 				<input type="text" class="form-control" id="content" name="content" value="${post.content}">
 			</div>
 			<input type="hidden" name="num" value="${post.num}">
+		<c:forEach items="${post.boardFiles}" var="file">
+			<div>
+				<span>${file.originName}</span><span class="fileDelete">X</span>
+			</div>
+		</c:forEach>
 			<button class="btn btn-info">Update</button>
 		</form>
-
+ 
 	</div>
 	
-	
+	<script type="text/javascript" src="../resources/jquery/boardUpdate.js"></script>
 </body>
 </html>
