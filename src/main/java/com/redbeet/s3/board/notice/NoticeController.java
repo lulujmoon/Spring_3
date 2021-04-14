@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.redbeet.s3.board.BoardDTO;
+import com.redbeet.s3.board.BoardFileDTO;
 import com.redbeet.s3.member.MemberDTO;
 import com.redbeet.s3.util.OldPager;
 import com.redbeet.s3.util.Pager;
@@ -26,6 +28,26 @@ public class NoticeController {
 
 	@Autowired
 	private NoticeService noticeService;
+	
+	@PostMapping("summerFileUpload")
+	public ModelAndView setSummerFileUpload(MultipartFile file) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		String fileName = noticeService.setSummerFileUpload(file);
+		fileName = "../resources/upload/notice/"+fileName;
+		mv.addObject("result", fileName);
+		mv.setViewName("common/ajaxResult");
+		
+		return mv;
+	}
+	
+	@PostMapping("summerFileDelete")
+	public ModelAndView setSummerFileDelete(String fileName) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		boolean result = noticeService.setSummerfileDelete(fileName);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
 	
 	@RequestMapping(value="noticeList")
 	public String getList(Model model, Pager pager) throws Exception {
@@ -84,8 +106,8 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value="noticeUpdate", method=RequestMethod.POST )
-	public ModelAndView setUpdate(NoticeDTO noticeDTO, ModelAndView mv) throws Exception {
-		int result = noticeService.setUpdate(noticeDTO);
+	public ModelAndView setUpdate(NoticeDTO noticeDTO, ModelAndView mv, MultipartFile [] files) throws Exception {
+		int result = noticeService.setUpdate(noticeDTO, files);
 		if(result>0) {
 			mv.setViewName("redirect:./noticeSelect?num="+noticeDTO.getNum());
 		}else {
@@ -109,6 +131,14 @@ public class NoticeController {
 	@RequestMapping(value="insertCheck")
 	public void insertCheck() throws Exception {
 		
+	}
+	
+	@GetMapping("fileDelete")
+	public ModelAndView setFileDelete(BoardFileDTO boardFileDTO, ModelAndView mv) throws Exception {
+		int result = noticeService.setFileDelete(boardFileDTO);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
 	}
 	
 }

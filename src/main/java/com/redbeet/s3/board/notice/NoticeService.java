@@ -27,6 +27,16 @@ public class NoticeService implements BoardService{
 	@Autowired
 	private HttpSession session;
 	
+	public String setSummerFileUpload(MultipartFile file) throws Exception {
+	 String fileName = fileManager.save("notice", file, session);
+	 return fileName;
+	}
+	
+	public boolean setSummerfileDelete(String fileName) throws Exception {
+		boolean result = fileManager.delete("notice", fileName, session);
+		return result;
+	}
+	
 	
 	public List<BoardDTO> getList(Pager pager) throws Exception {
 				
@@ -51,9 +61,21 @@ public class NoticeService implements BoardService{
 	}
 
 	@Override
-	public int setUpdate(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return noticeDAO.setUpdate(boardDTO);
+	public int setUpdate(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
+		int result = noticeDAO.setUpdate(boardDTO);
+		
+		for(MultipartFile mf:files) {
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			String fileName = fileManager.save("notice", mf, session);
+			
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOriginName(mf.getOriginalFilename());
+			boardFileDTO.setNum(boardDTO.getNum());
+			
+			result = noticeDAO.setFileInsert(boardFileDTO);
+		}
+		
+		return result;
 	}
 
 	@Override
@@ -81,6 +103,20 @@ public class NoticeService implements BoardService{
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return noticeDAO.setDelete(boardDTO);
+	}
+	
+	public int setFileDelete(BoardFileDTO boardFileDTO) throws Exception {
+		//1. 조회
+		boardFileDTO = noticeDAO.getFileSelect(boardFileDTO);
+		
+		//2. table에서 삭제
+		int result = noticeDAO.setFileDelete(boardFileDTO);
+		//3. HDD에서 삭제
+		if(result>0) {
+			fileManager.delete("notice", boardFileDTO.getFileName(), session);
+			result=1;
+		}
+		return result;
 	}
 	
 	

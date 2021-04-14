@@ -6,6 +6,7 @@
 <html lang="en">
   <head>
   <c:import url="./template/bootstrap.jsp"></c:import>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6a7af300f375c011b8c7f05c46aa6aa2"></script>
   <link rel="stylesheet" href="./resources/css/test.css">
     <title>Hello, world!</title>
 	<style type="text/css">
@@ -27,7 +28,7 @@
 	<c:import url="./template/header.jsp"></c:import>
 	
 	<div class="container" style="margin-top:30px">
-		
+		<div id="map" style="width:500px;height:400px;"></div>
 		<button class="b">BUTTON</button>
 		<button id="btn" class="b">Click</button>
 		<button id="btn2" class="b">Click2</button>
@@ -49,12 +50,13 @@
 	
 <script type="text/javascript">
 	
-	$("#btn2").click(function(){
-	   $.get("./test?num=1", function(data){
-	       console.log(data);
-	       $("#d2").html(data);
-	   });
-	});
+var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+var options = { 	//지도를 생성할 때 필요한 기본 옵션
+	center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+	level: 3 //지도의 레벨(확대, 축소 정도)
+};
+
+var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 
 	
 </script>

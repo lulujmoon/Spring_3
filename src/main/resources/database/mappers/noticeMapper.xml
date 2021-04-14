@@ -65,7 +65,7 @@
 	</resultMap>
 	
 	<insert id="setInsert" parameterType="BoardDTO">
-		insert into notice values (#{num}, #{subject}, '관리자', sysdate, 0, #{content})
+		insert into notice values (#{num}, #{subject}, '관리자', #{content}, sysdate, 0)
 	</insert>
 	
 	<insert id="setFileInsert" parameterType="BoardFileDTO">
@@ -87,5 +87,13 @@
 	<update id="setHitUpdate" parameterType="BoardDTO">
 		update notice set hit= hit+1 where num=#{num}
 	</update>
+	
+	<delete id="setFileDelete" parameterType="BoardFileDTO">
+		delete noticeFiles where fileNum=#{fileNum}
+	</delete>
+	
+	<select id="getFileSelect" parameterType="BoardFileDTO" resultType="BoardFileDTO">
+		select * from noticeFiles where fileNum=#{fileNum}
+	</select>
 
 </mapper>

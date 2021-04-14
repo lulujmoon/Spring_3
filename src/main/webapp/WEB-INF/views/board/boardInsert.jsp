@@ -5,6 +5,9 @@
 <html>
 <head>
 <c:import url="../template/bootstrap.jsp"></c:import>
+ <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+ <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
 <style>
 	.c1{
 		background-color:red;
@@ -12,9 +15,9 @@
 	.c2{
 		background-color:green;
 	}
-	/* #sample{
+	#sample{
 		display:none;
-	} */
+	}
 </style>
 <title>Insert title here</title>
 </head>
@@ -46,7 +49,7 @@
  			</div>
 			<input type="button" value="Add" id="add" class="btn btn-warning">
 			
-			<div id="files">
+			<div id="files" title="${post.boardFiles.size()}">
 				
 			</div>
 			<br>
@@ -67,5 +70,9 @@
 </div>
 	</div>
 <script type="text/javascript" src="../resources/jquery/boardInsert.js"></script>
+<script type="text/javascript" src="../resources/jquery/fileUpload.js"></script>
+<script type="text/javascript" src="../resources/jquery/summerFile.js"></script>
+
+
 </body>
 </html>
