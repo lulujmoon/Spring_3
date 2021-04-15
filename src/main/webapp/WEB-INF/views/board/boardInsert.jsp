@@ -44,7 +44,7 @@
 			</div>
 			<div class="form-group">
    				 <label for="content">Content</label>
-  				 <textarea class="form-control myCheck" id="content" rows="6" name="content"></textarea>
+  				 <textarea class="form-control myCheck" id="content" name="content"></textarea>
  				<small id="conResult" class="form-text text-muted"></small>
  			</div>
 			<input type="button" value="Add" id="add" class="btn btn-warning">
@@ -67,6 +67,7 @@
    		 <input class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04" value="Delete">
    		 
 		</div>
+		
 </div>
 	</div>
 <script type="text/javascript" src="../resources/jquery/boardInsert.js"></script>

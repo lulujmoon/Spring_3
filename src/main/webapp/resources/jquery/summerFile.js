@@ -1,20 +1,22 @@
 /**
  * 
  */
+
+
 $("#content").summernote({
-	    height:500,
-	    placeholder : '본문을 입력하세요.',
-	    callbacks: {
-		    onImageUpload: function(files) {
-				uploadFile(files);
-		      // upload image to server and create imgNode...
-		      //$summernote.summernote('insertNode', imgNode);
-		    },
-		    onMediaDelete: function(files){
-				deleteFile(files);
-			}
-		  }
-	});
+    height:500,
+    placeholder : '본문을 입력하세요.',
+    callbacks: {
+	    onImageUpload: function(files) {
+			uploadFile(files);
+	      // upload image to server and create imgNode...
+	      //$summernote.summernote('insertNode', imgNode);
+	    },
+	    onMediaDelete: function(files){
+			deleteFile(files);
+		}
+	  }
+});
 
 function uploadFile(files){
 	const formData = new FormData();	//Form 태그 생성
